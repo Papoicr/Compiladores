@@ -5,6 +5,7 @@ import static codigo.Tokens.*;
 %type Tokens
 L=[a-zA-Z_]+
 D=[1-9]
+N=[1-4]
 espacio=[ ,\t,\r,\n]+
 %{
     public String lexeme;
@@ -27,9 +28,6 @@ while {lexeme=yytext(); return Reservadas;}
 "BB" {lexeme=yytext(); return BasePorBola;}
 "W" {lexeme=yytext(); return BasePorBola;}
 "SAC" {lexeme=yytext(); return Sacrificio;}
-"1B" {lexeme=yytext(); return Hit;}
-"2B" {lexeme=yytext(); return Doble;}
-"3B" {lexeme=yytext(); return Triple;}
-"4B" {lexeme=yytext(); return Cuadrangular;}
 "HR" {lexeme=yytext(); return Homerun;}
+{N}"B" {lexeme=yytext(); return Avanza;}
  . {return ERROR;}

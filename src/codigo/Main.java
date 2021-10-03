@@ -25,8 +25,8 @@ public class Main {
             Reader lector = new BufferedReader(new FileReader("archivo.txt"));
             Scanner myReader = new Scanner(lector);
             Lexer lexer = new Lexer(lector);
+            Partido partido = new Partido();
             String resultado = "";
-            System.out.print("Debug1");
             while(true) {
                 Tokens tokens = lexer.yylex();
                 if (tokens == null) {
@@ -38,58 +38,50 @@ public class Main {
                         resultado += "Simbolo no definido";
                         break;
                     case BolaDetenida:
-                        resultado+= lexer.lexeme+": Bola Detenida por "
-                                +lexer.lexeme.charAt(0)+", out producido por "
-                                +lexer.lexeme.charAt(1);
+                        partido.Out(1);
+                        System.out.print(partido.toString());
                         break;
                     case Ponchada:
-                        resultado+=lexer.lexeme+": Ponchada (1 out)";
+                        partido.Out(1);
+                        System.out.print(partido.toString());
                         break;
                     case OutAtrapada:
-                        resultado+=lexer.lexeme+": Out por atrapada de "
-                                +lexer.lexeme.charAt(1);
+                        partido.Out(1);
+                        System.out.print(partido.toString());
                         break;
                     case JugadaDoble:
-                        resultado+=lexer.lexeme+": Jugada Doble ";
+                        partido.Out(2);
+                        System.out.print(partido.toString());
                         break;
                     case OutBateadorPrimera:
-                        resultado+=lexer.lexeme+": Out pero bateador avanza a "
-                                + "primera ";
+                        partido.Out(1);
+                        partido.AvanzaBase(1, 0);
+                        System.out.print(partido.toString());
                         break;
                     case BateadorPrimeraPorError:
-                        resultado+=lexer.lexeme+": Bateador llega a primera por "
-                                + "un error de " +lexer.lexeme.charAt(1);           
+                        partido.AvanzaBase(1,0);  
+                        System.out.print(partido.toString());
                         break;
                     case GolpeadoPorBola:
-                        resultado+=lexer.lexeme+": Bateador golpeado por bola, "
-                                + "avanza a primera ";
+                        partido.AvanzaBase(1,0);
+                        System.out.print(partido.toString());
                         break;
                     case BasePorBola:
-                        resultado+=lexer.lexeme+": Base por bolas ";
+                        partido.AvanzaBase(1,0);
+                        System.out.print(partido.toString());
                         break;
                     case Sacrificio:
-                        resultado+=lexer.lexeme+": Sacrificio, 1 out, los "
-                                + "corredores avanzan una base ";
-                        break;
-                    case Hit:
-                        resultado+=lexer.lexeme+": Bateador avanza a primera"
-                                + " base (hit)";
-                        break;
-                    case Doble:
-                        resultado+=lexer.lexeme+": Bateador avanza a segunda "
-                                + "base (doble)";
-                        break;
-                    case Triple:
-                        resultado+=lexer.lexeme+": Bateador avanza a tercera "
-                                + "base (triple) ";
-                        break;
-                    case Cuadrangular:
-                        resultado+=lexer.lexeme+": Cuadrangular (todos los "
-                                + "corredores anotan)";
+                        partido.Sacrificio();
+                        System.out.print(partido.toString());
                         break;
                     case Homerun:
-                        resultado+=lexer.lexeme+": Homerun";
+                        partido.AvanzaBase(4, 0);
+                        System.out.print(partido.toString());
                         break;
+                    case Avanza:
+                        partido.AvanzaBase(Character.getNumericValue(lexer.lexeme.charAt(0)), 0);
+                        System.out.print(partido.toString());
+                    break;
                     default:
                         resultado += "Token: " + tokens;
                         break;

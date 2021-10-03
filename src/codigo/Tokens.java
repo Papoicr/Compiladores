@@ -21,10 +21,7 @@ public enum Tokens {
     GolpeadoPorBola,
     BasePorBola,
     Sacrificio,
-    Hit,
-    Doble,
-    Triple,
-    Cuadrangular,
     Homerun,
+    Avanza,
     ERROR
 }
