@@ -71,9 +71,14 @@ public class Partido {
     
     public void Sacrificio(){
         for(int i = bases.length; i > 0; --i){
-            if(bases[i-1])
-                AvanzaBase(1, i);
+            System.out.print(i-1);
+            System.out.print("\n");
+            if(bases[i-1]){
+                AvanzaBase(1, i-1);
+                bases[i-1] = false;
+            }
         }
+        AvanzaBase(1,0);
         Out(1);
     }
     

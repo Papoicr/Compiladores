@@ -30,7 +30,7 @@ public class Main {
             while(true) {
                 Tokens tokens = lexer.yylex();
                 if (tokens == null) {
-                    resultado += "FIN";
+                    resultado += "\nFIN\n";
                     break;
                 }
                 switch (tokens) {
@@ -86,7 +86,6 @@ public class Main {
                         resultado += "Token: " + tokens;
                         break;
                 }
-                resultado+="\n";
             }
             System.out.print(resultado);
         } catch (FileNotFoundException ex) {
