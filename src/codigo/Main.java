@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 public class Main {
     public static void main(String[] args) {
         try {
-            Reader lector = new BufferedReader(new FileReader("archivo.txt"));
+            Reader lector = new BufferedReader(new FileReader("jugadas.txt"));
             Scanner myReader = new Scanner(lector);
             Lexer lexer = new Lexer(lector);
             Partido partido = new Partido();

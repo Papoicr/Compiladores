@@ -78,17 +78,22 @@ public class Partido {
                 bases[i-1] = false;
             }
         }
-        AvanzaBase(1,0);
         Out(1);
     }
     
     public String toString(){
-        return  "Entrada: " + String.valueOf(entrada) + "\n\nMarcador\nEquipo 1: " 
-                + String.valueOf(marcador[0])
-                + "\nEquipo 2: " +  String.valueOf(marcador[1])
+        String str = "Entrada: " + String.valueOf(entrada) + "\n\nMarcador\nEquipo 1: " 
+                + String.valueOf(marcador[1])
+                + "\nEquipo 2: " +  String.valueOf(marcador[0])
                 + "\n\nBase 1: " + String.valueOf(bases[0]) + "\nBase 2: " + 
                 String.valueOf(bases[1]) + "\nBase 3: " + String.valueOf(bases[2])
-                + "\nOuts: " + String.valueOf(outs) + "\nEquipo bateando: " +
-                String.valueOf(equipoBateando+1) + "\n--------------------\n";
+                + "\nOuts: " + String.valueOf(outs) + "\nEquipo bateando: ";
+        if(equipoBateando+1 == 2){
+            str = str + "1\n--------------------\n";
+        }
+        else{
+            str = str+ "2\n--------------------\n";
+        }
+        return str;
     }
 }
