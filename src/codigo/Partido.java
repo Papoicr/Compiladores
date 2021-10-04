@@ -85,8 +85,8 @@ public class Partido {
         String str = "Entrada: " + String.valueOf(entrada) + "\n\nMarcador\nEquipo 1: " 
                 + String.valueOf(marcador[1])
                 + "\nEquipo 2: " +  String.valueOf(marcador[0])
-                + "\n\nBase 1: " + String.valueOf(bases[0]) + "\nBase 2: " + 
-                String.valueOf(bases[1]) + "\nBase 3: " + String.valueOf(bases[2])
+                + "\n\nBase 1: " + ((bases[0]) ?   "Llena":"Vacía") + "\nBase 2: " + 
+                ((bases[1]) ?   "Llena":"Vacía") + "\nBase 3: " + ((bases[2]) ?   "Llena":"Vacía")
                 + "\nOuts: " + String.valueOf(outs) + "\nEquipo bateando: ";
         if(equipoBateando+1 == 2){
             str = str + "1\n--------------------\n";
